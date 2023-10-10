@@ -1,9 +1,21 @@
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import AppLayout from "./ui/AppLayout";
+import Dashboard from "./pages/Dashboard";
+import Posts from "./pages/Posts";
+import Links from "./pages/Links";
+
 function App() {
   return (
-    <>
-      <h1 className="font-sono">Page has established for tailwind css</h1>
-      <p className="p-4 font-poppins font-bold">skkfsj lksfjs j sjlf</p>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<AppLayout />}>
+          <Route index element={<Navigate replace to="dashboard" />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="pages" element={<Posts />} />
+          <Route path="links" element={<Links />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
