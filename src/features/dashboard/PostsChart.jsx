@@ -85,13 +85,13 @@ function PostsChart({ data }) {
   */
 
   return (
-    <div className="col-start-3 col-span-2 border border-slate-300 rounded bg-white py-8 px-2 flex flex-col gap-6 h-min-[350px]">
+    <div className="col-start-3 col-span-2 border border-slate-300 rounded bg-white py-8 px-2 flex flex-col gap-6 h-[350px]">
       <div className="px-6">
         <Heading as="h2">Posts per month</Heading>
       </div>
 
       <ResponsiveContainer height="100%" width="100%">
-        <BarChart width="100%" height={300} data={fakeData}>
+        <BarChart width="100%" height="300px" data={fakeData}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
