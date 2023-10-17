@@ -12,57 +12,80 @@ import Heading from "../../ui/Heading";
 const fakeData = [
   {
     name: "Jan",
-    amt: 2400,
+    post: 24,
   },
   {
     name: "Feb",
-    amt: 2210,
+    post: 20,
   },
   {
     name: "Mar",
-    amt: 2290,
+    post: 0,
   },
   {
     name: "Apr",
-    amt: 2000,
+    post: 12,
   },
   {
     name: "May",
-    amt: 2181,
+    post: 9,
   },
   {
     name: "Jun",
-    amt: 2500,
+    post: 0,
   },
   {
     name: "Jul",
-    amt: 2100,
+    post: 21,
   },
   {
     name: "Aug",
-    amt: 2100,
+    post: 5,
   },
   {
     name: "Sep",
-    amt: 2100,
+    post: 8,
   },
   {
     name: "Oct",
-    amt: 2100,
+    post: 6,
   },
   {
     name: "Nov",
-    amt: 2100,
+    post: 14,
   },
   {
     name: "Dec",
-    amt: 2100,
+    post: 3,
   },
 ];
 
+const monthName = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
 function PostsChart({ data }) {
+  const chartData = monthName.map((name) => {
+    return { name: name, post: 0 };
+  });
+
+  /*
+  SORRY, I tried to calculate the value for chart, I am unable to solve this.
+  */
+
   return (
-    <div className="col-start-3 col-span-2 border border-slate-300 rounded bg-white py-8 px-2 flex flex-col gap-6">
+    <div className="col-start-3 col-span-2 border border-slate-300 rounded bg-white py-8 px-2 flex flex-col gap-6 h-min-[350px]">
       <div className="px-6">
         <Heading as="h2">Posts per month</Heading>
       </div>
@@ -74,9 +97,13 @@ function PostsChart({ data }) {
           <YAxis />
           <Tooltip />
           {/* <Legend /> */}
-          <Bar dataKey="amt" fill="#125c45" />
+          <Bar dataKey="post" fill="#125c45" />
         </BarChart>
       </ResponsiveContainer>
+      <p>
+        This is a fake data. I am unable to create dynamic data for this chart
+        from post data.
+      </p>
     </div>
   );
 }

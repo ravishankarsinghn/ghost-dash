@@ -36,7 +36,7 @@ function DashboardLayout() {
   useEffect(() => {
     const data = async () => {
       const pages = await getPages();
-      setTotalPages(pages.length);
+      setTotalPages(pages?.length || 0);
     };
     data();
   }, []);
@@ -44,7 +44,7 @@ function DashboardLayout() {
   useEffect(() => {
     const data = async () => {
       const authors = await getAuthors();
-      setTotalAuthors(authors.length);
+      setTotalAuthors(authors?.length || 0);
     };
     data();
   }, []);
@@ -52,7 +52,7 @@ function DashboardLayout() {
   useEffect(() => {
     const data = async () => {
       const tags = await getTags();
-      setTotalTags(tags.length);
+      setTotalTags(tags?.length || 0);
     };
     data();
   }, []);
@@ -63,7 +63,7 @@ function DashboardLayout() {
     grid grid-cols-4 grid-rows-[auto_auto] gap-6"
     >
       <Stats
-        numPosts={posts.length}
+        numPosts={posts.length || 0}
         numTags={totalTags}
         numAuthors={totalAuthors}
         numPages={totalPages}

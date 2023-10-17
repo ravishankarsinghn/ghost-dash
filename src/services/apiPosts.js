@@ -7,7 +7,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 const api = new GhostContentAPI({
   url: API_URL,
   key: API_KEY,
-  version: "v5.0",
+  version: "v3.0",
 });
 
 export const getPosts = async function (limits) {

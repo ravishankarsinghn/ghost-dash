@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "../../ui/Card";
 import LinkListItem from "../../ui/LinkListItem";
 import { getPosts } from "../../services/apiPosts";
+import ErrorMessage from "../../ui/ErrorMessage";
 
 const getTextContent = (html) => {
   const div = document.createElement("div");
@@ -51,9 +52,13 @@ function PostInfoLayout() {
     grid grid-cols-3 grid-rows-[auto_auto] gap-6"
     >
       <Card cardTitle="Without meta description">
-        {withoutMeta.map((post) => (
-          <LinkListItem linkTitle={post.title} url={post.url} key={post.id} />
-        ))}
+        {withoutMeta.length > 0 ? (
+          withoutMeta.map((post) => (
+            <LinkListItem linkTitle={post.title} url={post.url} key={post.id} />
+          ))
+        ) : (
+          <ErrorMessage>No post without meta description.</ErrorMessage>
+        )}
       </Card>
 
       <Card cardTitle="Without featured image">
@@ -62,7 +67,7 @@ function PostInfoLayout() {
             <LinkListItem linkTitle={post.title} url={post.url} key={post.id} />
           ))
         ) : (
-          <p>No posts found without featured image</p>
+          <ErrorMessage>No posts found without Featured image.</ErrorMessage>
         )}
       </Card>
 
@@ -72,7 +77,7 @@ function PostInfoLayout() {
             <LinkListItem linkTitle={post.title} url={post.url} key={post.id} />
           ))
         ) : (
-          <p>No posts found below 250 words</p>
+          <ErrorMessage>No posts found below 250 words.</ErrorMessage>
         )}
       </Card>
 
@@ -82,7 +87,9 @@ function PostInfoLayout() {
             <LinkListItem linkTitle={post.title} url={post.url} key={post.id} />
           ))
         ) : (
-          <p>No posts found with more than 160 chars meta description</p>
+          <ErrorMessage>
+            No posts found with more than 160 chars meta description.
+          </ErrorMessage>
         )}
       </Card>
 
@@ -92,7 +99,9 @@ function PostInfoLayout() {
             <LinkListItem linkTitle={post.title} url={post.url} key={post.id} />
           ))
         ) : (
-          <p>No post's URL found with more than 100 chars long.</p>
+          <ErrorMessage>
+            No post's URL found with more than 100 chars long.
+          </ErrorMessage>
         )}
       </Card>
 
@@ -102,7 +111,7 @@ function PostInfoLayout() {
             <LinkListItem linkTitle={post.title} url={post.url} key={post.id} />
           ))
         ) : (
-          <p>No post found with more than 1500 words.</p>
+          <ErrorMessage>No post found with more than 1500 words.</ErrorMessage>
         )}
       </Card>
     </div>
